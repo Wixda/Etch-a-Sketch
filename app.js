@@ -3,12 +3,23 @@ const btn = document.querySelector('button');
 
 function addDiv() {
     const newDiv = document.createElement('div');
-    newDiv.style.cssText = 'width: 100px; height: 100px; cursor: pointer;';
+    newDiv.style.cssText = 'width: 100px; height: 100px; cursor: pointer; opacity: 0.1;';
     Container.appendChild(newDiv);
 }
 
 for (let i = 0; i < 16; i++) {
     addDiv();
+}
+
+const containerChild = Container.children;
+for (let i = 0; i < containerChild.length; i++) {
+    containerChild[i].addEventListener('mouseover', () => {
+    containerChild[i].style.backgroundColor = 'red';
+    if (containerChild[i].style.opacity < 1) {
+        containerChild[i].style.opacity = +containerChild[i].style.opacity + 0.1;
+        // +e.style.opacity to convert opacity from string to number
+    }
+    })
 }
 
 
@@ -20,7 +31,7 @@ function removeAllChildNodes(parentNode) {
 
 function addDivOfSize(squarePerSide) {
     let squareLength = 400 / squarePerSide;
-    const newDiv = document.createElement('div');
+    const newDiv = document.createElement('div');   
     newDiv.style.cssText = `width: ${squareLength}px; height: ${squareLength}px; cursor: pointer;`;
     Container.appendChild(newDiv);
 }
@@ -42,12 +53,19 @@ btn.addEventListener('click', () => {
 
     for (let i = 0; i < totalSquares; i++) {
         addDivOfSize(userInput);
-    }    
-})
+    }
 
-const containerChild = Container.children;
-for (let i = 0; i < containerChild.length; i++) {
-    containerChild[i].addEventListener('mouseover', () => {
-    containerChild[i].style.backgroundColor = 'green';
+    const containerChild = Container.children;
+    for (let i = 0; i < containerChild.length; i++) {
+        containerChild[i].addEventListener('mouseover', () => {
+        containerChild[i].style.backgroundColor = 'blue';
+        if (containerChild[i].style.opacity < 1) {
+        containerChild[i].style.opacity = +containerChild[i].style.opacity + 0.1;
+        // +e.style.opacity to convert opacity from string to number
+    }
+
     })
 }
+
+})
+

@@ -11,12 +11,6 @@ for (let i = 0; i < 16; i++) {
     addDiv();
 }
 
-const containerChild = Container.children;
-for (let i = 0; i < containerChild.length; i++) {
-    containerChild[i].addEventListener('mouseover', () => {
-    containerChild[i].style.backgroundColor = 'green';
-    })
-}
 
 function removeAllChildNodes(parentNode) {
     while (parentNode.hasChildNodes()) {
@@ -34,7 +28,7 @@ function addDivOfSize(squarePerSide) {
 btn.addEventListener('click', () => {
     removeAllChildNodes(Container);
     let userInput = Number(prompt("What is the no of squares per side for the new grid"));
-    console.log(userInput);
+    // Check for user errors using while loop
     while (userInput == NaN) {
         userInput = Number(prompt("Enter a valid number"));
     }
@@ -48,12 +42,12 @@ btn.addEventListener('click', () => {
 
     for (let i = 0; i < totalSquares; i++) {
         addDivOfSize(userInput);
-    }
+    }    
+})
 
-    const containerChild = Container.children;
-    for (let i = 0; i < containerChild.length; i++) {
-        containerChild[i].addEventListener('mouseover', () => {
-        containerChild[i].style.backgroundColor = 'green';
+const containerChild = Container.children;
+for (let i = 0; i < containerChild.length; i++) {
+    containerChild[i].addEventListener('mouseover', () => {
+    containerChild[i].style.backgroundColor = 'green';
     })
 }
-})
